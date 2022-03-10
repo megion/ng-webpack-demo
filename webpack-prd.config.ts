@@ -13,12 +13,6 @@ const config: webpack.Configuration = {
       ),
     },
   },
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'js/[name].js',
-    library: '[name]',
-    libraryTarget: 'umd',
-  },
   optimization: {
     minimize: false,
   },

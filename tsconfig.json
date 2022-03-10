@@ -1,28 +1,21 @@
 {
   "compilerOptions": {
     "module": "ESNext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "target": "ESNext",
+    "target": "ES2020",
     "noImplicitAny": false,
     "removeComments": false,
     "noLib": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "esModuleInterop": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "esModuleInterop": true
   },
   "compileOnSave": false,
-  "include": ["src"],
-  "exclude": [
-    "node_modules",
-    "public",
-    "**/*.test.ts",
-    "src/__tests__",
-    "src/__mocks__"
-  ]
+  "files": ["src/main.ts", "src/polyfills.ts"],
+  "include": ["src/**/*.d.ts"],
+  "angularCompilerOptions": {
+    "enableIvy": true,
+    "compilationMode": "partial"
+  }
 }

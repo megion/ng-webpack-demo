@@ -16,6 +16,7 @@ const config: webpack.Configuration = {
 
   entry: {
     main: './main',
+    polyfills: './polyfills.ts', // add this
   },
 
   output: {
@@ -26,25 +27,51 @@ const config: webpack.Configuration = {
   module: {
     rules: [
       // {
-      //   test: /\.ts$/,
-      //   exclude: [/node_modules/],
+      //   test: /.*\.(js|ts)$/,
+      //   include: /node_modules\/(ngx-tiptap|ngx-another-lib)/,
       //   use: [
       //     {
-      //       loader: 'ts-loader',
+      //       loader: 'babel-loader',
+      //       options: {
+      //         configFile: false,
+      //         plugins: ['@angular/compiler-cli/linker/babel'],
+      //       },
       //     },
       //   ],
       // },
+      // /* your regular build, excluding packages */
+      // {
+      //   test: /.*\.(js|ts)$/,
+      //   exclude: /node_modules/,
+      //   use: [
+      //     { loader: 'babel-loader' },
+      //     { loader: '@ngtools/webpack' },
+      //     // { loader: '@angular-devkit/build-optimizer/webpack-loader' },
+      //   ],
+      // },
       {
-        // test: /\.[jt]sx?$/,
         test: /\.ts$/,
         exclude: [/node_modules/],
-        loader: '@ngtools/webpack',
+        use: [
+          {
+            // loader: 'ts-loader',
+            loader: '@ngtools/webpack',
+          },
+        ],
       },
       // {
-      //   test: /\.[cm]?js$/,
+      //   // test: /\.[jt]sx?$/,
+      //   test: /\.ts$/,
       //   exclude: [/node_modules/],
+      //   loader: '@ngtools/webpack',
+      // },
+      // {
+      //   test: /\.m?js$/,
+      //   exclude: /(node_modules|bower_components)/,
+      //   // exclude: [/node_modules/],
       //   loader: 'babel-loader',
       //   options: {
+      //     presets: ['@babel/preset-env'],
       //     cacheDirectory: true,
       //     compact: false,
       //     plugins: [linkerPlugin],
@@ -105,11 +132,14 @@ const config: webpack.Configuration = {
   },
 
   plugins: [
-    new AngularWebpackPlugin({}),
-    new ESLintPlugin({
-      exclude: ['node_modules'],
-      extensions: ['ts'],
+    new AngularWebpackPlugin({
+      tsconfig: path.resolve(__dirname, 'tsconfig.json'),
+      // ... other options as needed
     }),
+    // new ESLintPlugin({
+    //   exclude: ['node_modules'],
+    //   extensions: ['ts'],
+    // }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
     }),
