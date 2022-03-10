@@ -1,21 +1,51 @@
 {
   "name": "angular-webpack-demo",
   "version": "1.0.0",
-  "scripts": {},
+  "scripts": {
+    "test": "jest",
+    "build:dev": "rimraf public && cross-env TS_NODE_PROJECT=\"./tsconfig-for-webpack.json\" webpack --config webpack-dev.config.ts",
+    "build": "rimraf public && cross-env TS_NODE_PROJECT=\"./tsconfig-for-webpack.json\" webpack --config webpack-prd.config.ts",
+    "start": "rimraf public && cross-env TS_NODE_PROJECT=\"./tsconfig-for-webpack.json\" webpack serve --config webpack-dev.config.ts"
+  },
   "devDependencies": {
+    "@angular/cli": "^13.2.5",
+    "@angular/compiler-cli": "^13.2.6",
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
     "@ngtools/webpack": "^13.2.5",
+    "@types/node": "^17.0.21",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
+    "babel-loader": "^8.2.3",
     "cross-env": "^7.0.3",
+    "css-loader": "^6.7.1",
     "eslint": "^8.10.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-webpack-plugin": "^3.1.1",
+    "html-loader": "^3.1.0",
     "html-webpack-plugin": "^5.5.0",
+    "less-loader": "^10.2.0",
     "mini-css-extract-plugin": "^2.6.0",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
     "ts-loader": "^9.2.7",
-    "typescript": "^4.6.2",
+    "ts-node": "^10.7.0",
+    "typescript": "4.5.5",
     "webpack": "^5.70.0",
     "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4",
     "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "@angular/animations": "^13.2.6",
+    "@angular/common": "^13.2.6",
+    "@angular/compiler": "^13.2.6",
+    "@angular/core": "^13.2.6",
+    "@angular/forms": "^13.2.6",
+    "@angular/platform-browser": "^13.2.6",
+    "@angular/platform-browser-dynamic": "^13.2.6",
+    "@angular/router": "^13.2.6",
+    "rxjs": "^7.5.5",
+    "zone.js": "^0.11.5"
   }
 }

@@ -5,6 +5,14 @@ import commonConfig from './webpack.config'
 
 const config: webpack.Configuration = {
   mode: 'production',
+  resolve: {
+    alias: {
+      [path.resolve(__dirname, 'environments/environment.ts')]: path.resolve(
+        __dirname,
+        'environments/environment.prod.ts',
+      ),
+    },
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].js',
@@ -13,9 +21,6 @@ const config: webpack.Configuration = {
   },
   optimization: {
     minimize: false,
-  },
-  entry: {
-    fwd: './fwd',
   },
 }
 export default merge(commonConfig, config)

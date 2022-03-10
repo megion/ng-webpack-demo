@@ -3,22 +3,60 @@ import * as webpack from 'webpack'
 
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import ESLintPlugin from 'eslint-webpack-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import { AngularWebpackPlugin } from '@ngtools/webpack'
+import linkerPlugin from '@angular/compiler-cli/linker/babel'
 
 const config: webpack.Configuration = {
   context: path.resolve(__dirname, 'src'),
 
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.ts', '.js'],
+  },
+
+  entry: {
+    main: './main',
+  },
+
+  output: {
+    publicPath: './',
+    path: path.resolve(__dirname, 'public'),
   },
 
   module: {
     rules: [
+      // {
+      //   test: /\.ts$/,
+      //   exclude: [/node_modules/],
+      //   use: [
+      //     {
+      //       loader: 'ts-loader',
+      //     },
+      //   ],
+      // },
       {
-        test: /\.(ts|tsx)$/i,
+        // test: /\.[jt]sx?$/,
+        test: /\.ts$/,
         exclude: [/node_modules/],
+        loader: '@ngtools/webpack',
+      },
+      // {
+      //   test: /\.[cm]?js$/,
+      //   exclude: [/node_modules/],
+      //   loader: 'babel-loader',
+      //   options: {
+      //     cacheDirectory: true,
+      //     compact: false,
+      //     plugins: [linkerPlugin],
+      //   },
+      // },
+      {
+        test: /\.html$/,
+        exclude: /index\.html$/,
         use: [
           {
-            loader: 'ts-loader',
+            loader: 'html-loader',
+            options: {},
           },
         ],
       },
@@ -39,19 +77,20 @@ const config: webpack.Configuration = {
         ],
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.less$/,
         use: [
           // creates style nodes from JS strings
-          //process.env.NODE_ENV !== "production"
-          //? "style-loader"
-          //: MiniCssExtractPlugin.loader,
           {
             loader: MiniCssExtractPlugin.loader,
           },
-          // Translates CSS into CommonJS
-          'css-loader',
-          // Compiles Sass to CSS
-          'sass-loader',
+          // translates CSS into CommonJS
+          {
+            loader: 'css-loader',
+          },
+          // compiles Less to CSS
+          {
+            loader: 'less-loader',
+          },
         ],
       },
       {
@@ -66,12 +105,18 @@ const config: webpack.Configuration = {
   },
 
   plugins: [
+    new AngularWebpackPlugin({}),
     new ESLintPlugin({
       exclude: ['node_modules'],
       extensions: ['ts'],
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Demo',
+      template: 'index.html',
+      inject: true,
     }),
   ],
 }
