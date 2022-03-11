@@ -4,8 +4,8 @@ import * as webpack from 'webpack'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import ESLintPlugin from 'eslint-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import { AngularWebpackPlugin } from '@ngtools/webpack'
-import linkerPlugin from '@angular/compiler-cli/linker/babel'
+// import { AngularWebpackPlugin } from '@ngtools/webpack'
+// import linkerPlugin from '@angular/compiler-cli/linker/babel'
 
 const config: webpack.Configuration = {
   context: path.resolve(__dirname, 'src'),
@@ -15,8 +15,8 @@ const config: webpack.Configuration = {
   },
 
   entry: {
+    polyfills: './polyfills.ts',
     main: './main',
-    polyfills: './polyfills.ts', // add this
   },
 
   output: {
@@ -26,64 +26,24 @@ const config: webpack.Configuration = {
 
   module: {
     rules: [
-      // {
-      //   test: /.*\.(js|ts)$/,
-      //   include: /node_modules\/(ngx-tiptap|ngx-another-lib)/,
-      //   use: [
-      //     {
-      //       loader: 'babel-loader',
-      //       options: {
-      //         configFile: false,
-      //         plugins: ['@angular/compiler-cli/linker/babel'],
-      //       },
-      //     },
-      //   ],
-      // },
-      // /* your regular build, excluding packages */
-      // {
-      //   test: /.*\.(js|ts)$/,
-      //   exclude: /node_modules/,
-      //   use: [
-      //     { loader: 'babel-loader' },
-      //     { loader: '@ngtools/webpack' },
-      //     // { loader: '@angular-devkit/build-optimizer/webpack-loader' },
-      //   ],
-      // },
       {
         test: /\.ts$/,
         exclude: [/node_modules/],
         use: [
           {
-            // loader: 'ts-loader',
-            loader: '@ngtools/webpack',
+            loader: 'ts-loader',
           },
         ],
       },
-      // {
-      //   // test: /\.[jt]sx?$/,
-      //   test: /\.ts$/,
-      //   exclude: [/node_modules/],
-      //   loader: '@ngtools/webpack',
-      // },
-      // {
-      //   test: /\.m?js$/,
-      //   exclude: /(node_modules|bower_components)/,
-      //   // exclude: [/node_modules/],
-      //   loader: 'babel-loader',
-      //   options: {
-      //     presets: ['@babel/preset-env'],
-      //     cacheDirectory: true,
-      //     compact: false,
-      //     plugins: [linkerPlugin],
-      //   },
-      // },
       {
         test: /\.html$/,
         exclude: /index\.html$/,
         use: [
           {
             loader: 'html-loader',
-            options: {},
+            options: {
+              esModule: false,
+            },
           },
         ],
       },
@@ -91,8 +51,7 @@ const config: webpack.Configuration = {
         test: /\.css$/,
         // Adds CSS to the DOM by injecting a <style> tag
         use: [
-          // Adds CSS to the DOM by injecting a <style> tag
-          //{loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader},
+          // extracts CSS into separate files
           {
             loader: MiniCssExtractPlugin.loader,
           },
@@ -103,14 +62,37 @@ const config: webpack.Configuration = {
           },
         ],
       },
+      /*
+       * loaders for component styles, exclude common styles
+       */
       {
         test: /\.less$/,
+        exclude: [/styles/],
         use: [
-          // creates style nodes from JS strings
+          {
+            loader: 'raw-loader',
+            options: {
+              esModule: false,
+            },
+          },
+          // compiles Less to CSS
+          {
+            loader: 'less-loader',
+          },
+        ],
+      },
+      /*
+       * loaders for styles from `styles` directory
+       */
+      {
+        test: /\.less$/,
+        include: [/styles/],
+        use: [
+          // extracts CSS into separate files
           {
             loader: MiniCssExtractPlugin.loader,
           },
-          // translates CSS into CommonJS
+          // css-loader interprets @import and url()
           {
             loader: 'css-loader',
           },
@@ -132,14 +114,14 @@ const config: webpack.Configuration = {
   },
 
   plugins: [
-    new AngularWebpackPlugin({
-      tsconfig: path.resolve(__dirname, 'tsconfig.json'),
-      // ... other options as needed
-    }),
-    // new ESLintPlugin({
-    //   exclude: ['node_modules'],
-    //   extensions: ['ts'],
+    // new AngularWebpackPlugin({
+    //   tsconfig: path.resolve(__dirname, 'tsconfig.json'),
+    //   // ... other options as needed
     // }),
+    new ESLintPlugin({
+      exclude: ['node_modules'],
+      extensions: ['ts'],
+    }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
     }),

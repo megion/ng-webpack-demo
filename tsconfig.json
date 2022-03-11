@@ -9,7 +9,11 @@
     "experimentalDecorators": true,
     "sourceMap": true,
     "moduleResolution": "node",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "lib": [
+      "es2018",
+      "dom"
+    ]
   },
   "compileOnSave": false,
   "files": ["src/main.ts", "src/polyfills.ts"],

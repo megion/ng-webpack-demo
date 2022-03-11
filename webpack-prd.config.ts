@@ -7,9 +7,9 @@ const config: webpack.Configuration = {
   mode: 'production',
   resolve: {
     alias: {
-      [path.resolve(__dirname, 'environments/environment.ts')]: path.resolve(
+      './environments/environment': path.resolve(
         __dirname,
-        'environments/environment.prod.ts',
+        'src/environments/environment.prod.ts',
       ),
     },
   },

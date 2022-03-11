@@ -1,9 +1,14 @@
 <div class="toolbar" role="banner">
-  <span>Welcome</span>
+  <h1>Welcome</h1>
 </div>
 
 <div class="content" role="main">
   <span>{{ title }} app is running!</span>
 </div>
 
+
+<h1>{{message}}</h1>
+<input type="text" [(ngModel)]="message"/>
+
+<h2>should be red</h2>
 <router-outlet></router-outlet>
