@@ -1,1 +1,0 @@
-{"version":3,"file":"main.css","mappings":";;;AAAA;AACA;AACA;AACA","sources":["webpack:///./styles/index.less"],"sourcesContent":["/* You can add global styles to this file, and also import other style files */\nh2 {\n  color: red;\n}\n"],"names":[],"sourceRoot":""}

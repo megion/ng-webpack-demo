@@ -16,5 +16,24 @@ const config: webpack.Configuration = {
   optimization: {
     minimize: false,
   },
+  module: {
+    rules: [
+      {
+        test: /\.[cm]?js$/,
+        enforce: 'pre',
+        use: [
+          {
+            loader: 'source-map-loader',
+            options: {
+              filterSourceMappingUrl: (url, resourcePath) => {
+                //TODO: remove all source map urls
+                return false
+              },
+            },
+          },
+        ],
+      },
+    ],
+  },
 }
 export default merge(commonConfig, config)

@@ -128,6 +128,7 @@ const config: webpack.Configuration = {
     new HtmlWebpackPlugin({
       title: 'Demo',
       template: 'index.html',
+      favicon: path.resolve(__dirname, 'src/favicon.ico'),
       inject: true,
     }),
   ],

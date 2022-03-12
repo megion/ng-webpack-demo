@@ -10,16 +10,13 @@
     "sourceMap": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "lib": ["es2018", "dom"]
   },
   "compileOnSave": false,
-  "files": ["src/main.ts", "src/polyfills.ts"],
-  "include": ["src/**/*.d.ts"],
-  "angularCompilerOptions": {
-    "enableIvy": true,
-    "compilationMode": "partial"
-  }
+  "include": ["src"],
+  "exclude": [
+    "node_modules",
+    "public",
+    "src/__mocks__"
+  ]
 }
