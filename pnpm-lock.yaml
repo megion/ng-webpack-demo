@@ -32,6 +32,7 @@ specifiers:
   jest-preset-angular: ^11.1.1
   less: ^4.1.2
   less-loader: ^10.2.0
+  merge: ^2.1.1
   mini-css-extract-plugin: ^2.6.0
   prettier: ^2.5.1
   raw-loader: ^4.0.2
@@ -41,6 +42,7 @@ specifiers:
   ts-jest: ^27.1.3
   ts-loader: ^9.2.7
   ts-node: ^10.7.0
+  tslib: ^2.3.1
   typescript: 4.5.5
   webpack: ^5.70.0
   webpack-cli: ^4.9.2
@@ -58,6 +60,7 @@ dependencies:
   '@angular/platform-browser-dynamic': 13.2.6_f5b2df82d19ef2a7fbce664edb009a33
   '@angular/router': 13.2.6_86425e7777f7860151d5de03ba245de0
   rxjs: 7.5.5
+  tslib: 2.3.1
   zone.js: 0.11.5
 
 devDependencies:
@@ -84,6 +87,7 @@ devDependencies:
   jest-preset-angular: 11.1.1_f10c195b4f3f5787f999a874c95d3aab
   less: 4.1.2
   less-loader: 10.2.0_less@4.1.2+webpack@5.70.0
+  merge: 2.1.1
   mini-css-extract-plugin: 2.6.0_webpack@5.70.0
   prettier: 2.5.1
   raw-loader: 4.0.2_webpack@5.70.0
@@ -5705,6 +5709,10 @@ packages:
 
   /merge-stream/2.0.0:
     resolution: {integrity: sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==}
+    dev: true
+
+  /merge/2.1.1:
+    resolution: {integrity: sha512-jz+Cfrg9GWOZbQAnDQ4hlVnQky+341Yk5ru8bZSe6sIDTCIg8n9i/u7hSQGSVOF3C7lH6mGtqjkiT9G4wFLL0w==}
     dev: true
 
   /merge2/1.4.1:

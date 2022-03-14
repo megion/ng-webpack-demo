@@ -1,4 +1,4 @@
-const jestCfg = require('./jest.config')
+const jestCfg = require('./jest.config').default
 
 /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 module.exports = {

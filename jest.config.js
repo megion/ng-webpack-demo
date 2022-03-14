@@ -1,12 +1,11 @@
-import { pathsToModuleNameMapper } from 'ts-jest/utils'
-import { compilerOptions } from './tsconfig.json'
-const { paths } = compilerOptions
+const { pathsToModuleNameMapper } = require('ts-jest/utils')
+const { paths } = require('./tsconfig.json').compilerOptions
 
 /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
-export default {
+
+const config = {
   preset: 'jest-preset-angular',
-  moduleNameMapper: pathsToModuleNameMapper(paths, {
-    prefix: '<rootDir>',
-  }),
+  moduleNameMapper: pathsToModuleNameMapper(paths, { prefix: '<rootDir>' }),
   setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
 }
+module.exports = config
