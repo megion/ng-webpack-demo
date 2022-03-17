@@ -1,7 +1,13 @@
 {
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "moduleResolution": "Node",
+    "esModuleInterop": true
+  },
+  "ts-node": {
     "compilerOptions": {
-        "module": "commonjs",
-        "target": "es5",
-        "esModuleInterop": true
+      "module": "CommonJS"
     }
+  }
 }

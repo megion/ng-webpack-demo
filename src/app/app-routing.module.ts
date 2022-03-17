@@ -1,7 +1,15 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
+import { AboutComponent } from './components/about/about.component'
 
-const routes: Routes = []
+export const routes: Routes = [
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: 'about', component: AboutComponent },
+  {
+    path: 'heroes',
+    loadChildren: () => import('./hero/hero.module').then((m) => m.HeroModule),
+  },
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

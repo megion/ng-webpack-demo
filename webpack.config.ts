@@ -4,14 +4,32 @@ import * as webpack from 'webpack'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import ESLintPlugin from 'eslint-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-// import { AngularWebpackPlugin } from '@ngtools/webpack'
+// import linkerPlugin from '@angular/compiler-cli/linker/babel'
+import { AngularWebpackPlugin } from '@ngtools/webpack'
 // import linkerPlugin from '@angular/compiler-cli/linker/babel'
 
 const config: webpack.Configuration = {
   context: path.resolve(__dirname, 'src'),
 
+  optimization: {
+    chunkIds: 'named',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /node_modules/,
+          chunks: 'initial',
+          name: 'vendor',
+          priority: 10,
+          enforce: true,
+        },
+      },
+    },
+  },
+
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.tsx', '.mjs', '.js'],
+    // mainFields: ['es2020', 'es2015', 'browser', 'module', 'main'],
+    // conditionNames: ['es2020', 'es2015', '...'],
   },
 
   entry: {
@@ -28,12 +46,41 @@ const config: webpack.Configuration = {
     rules: [
       {
         test: /\.ts$/,
-        exclude: [/node_modules/],
+        // exclude: [/node_modules/],
         use: [
+          // {
+          //   loader: 'babel-loader',
+          //   options: {
+          //     plugins: [linkerPlugin],
+          //     presets: ['@babel/preset-env'],
+          //     compact: false,
+          //     // cacheDirectory: true,
+          //   },
+          // },
+          // { loader: 'babel-loader' },
           {
-            loader: 'ts-loader',
+            loader: '@ngtools/webpack',
           },
+          // { loader: '@angular-devkit/build-angular/webpack-loader' },
+          // {
+          //   loader: 'ts-loader',
+          // },
+          // {
+          //   loader: 'angular2-template-loader',
+          // },
         ],
+      },
+      {
+        test: /\.m?js$/,
+        // include: /node_modules\/@angular/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: ['@angular/compiler-cli/linker/babel'],
+            compact: false,
+            cacheDirectory: true,
+          },
+        },
       },
       {
         test: /\.html$/,
@@ -114,10 +161,14 @@ const config: webpack.Configuration = {
   },
 
   plugins: [
-    // new AngularWebpackPlugin({
-    //   tsconfig: path.resolve(__dirname, 'tsconfig.json'),
-    //   // ... other options as needed
-    // }),
+    new AngularWebpackPlugin({
+      // jitMode: false,
+      // strictTemplates: false,
+      // directTemplateLoading: true,
+      tsconfig: path.resolve(__dirname, 'tsconfig.angular.json'),
+      // jitMode: true,
+      // ... other options as needed
+    }),
     new ESLintPlugin({
       exclude: ['node_modules'],
       extensions: ['ts'],

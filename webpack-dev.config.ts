@@ -12,20 +12,5 @@ const config: webpack.Configuration = {
   //   compress: true,
   //   port: 9000,
   // },
-
-  optimization: {
-    chunkIds: 'named',
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /node_modules/,
-          chunks: 'initial',
-          name: 'vendor',
-          priority: 10,
-          enforce: true,
-        },
-      },
-    },
-  },
 }
 export default merge(commonConfig, config)
