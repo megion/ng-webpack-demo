@@ -1,0 +1,17 @@
+{
+  "extends": "../configs/tsconfig.json",
+  "include": ["src"],
+  "compilerOptions": {
+    "declaration": true,
+    "sourceMap": true,
+    "declarationMap": true,
+    "declarationDir": "dist/types"
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.test.ts",
+    "src/__tests__",
+    "src/__mocks__"
+  ]
+}

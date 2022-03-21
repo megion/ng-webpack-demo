@@ -1,0 +1,4 @@
+packages:
+  - './next-pure'
+  - './old-pure'
+  - './next-hybrid'

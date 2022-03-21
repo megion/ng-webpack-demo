@@ -1,0 +1,15 @@
+{
+  "name": "@hcs-hybrid-demo/next-hybrid",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "jest",
+    "ng": "ng",
+    "build:dev": "rimraf public && cross-env TS_NODE_PROJECT=\"./tsconfig-for-webpack.json\" webpack --config webpack-dev.config.ts",
+    "build": "rimraf public && cross-env TS_NODE_PROJECT=\"./tsconfig-for-webpack.json\" webpack --config webpack-prd.config.ts",
+    "start": "cross-env TS_NODE_PROJECT=\"./tsconfig-for-webpack.json\" webpack serve --config webpack-dev.config.ts"
+  },
+  "devDependencies": {
+  },
+  "dependencies": {
+  }
+}

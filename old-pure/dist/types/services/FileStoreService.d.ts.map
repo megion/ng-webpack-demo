@@ -1,0 +1,1 @@
+{"version":3,"file":"FileStoreService.d.ts","sourceRoot":"","sources":["../../../src/app/services/FileStoreService.ts"],"names":[],"mappings":";AAAA,OAAO,EAAE,UAAU,EAAE,MAAM,YAAY,CAAA;AAEvC;;GAEG;AACH,qBAAa,gBAAgB;IACf,OAAO,CAAC,KAAK;gBAAL,KAAK,EAAE,EAAE,CAAC,YAAY;IAI1C,kBAAkB,CAAC,IAAI,EAAE,UAAU,GAAG,MAAM;CAG7C"}

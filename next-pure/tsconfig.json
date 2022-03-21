@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES2020",
+    "noImplicitAny": false,
+    "removeComments": false,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "lib": ["es2018", "dom"],
+    "baseUrl": "./",
+    "paths": {
+      "@shared/*": ["src/app/shared/*"]
+    }
+  },
+  "compileOnSave": false,
+  "include": ["src"],
+  "exclude": [
+    "node_modules",
+    "public",
+    "src/__mocks__"
+  ]
+}

@@ -1,0 +1,10 @@
+<div class="file-list">
+  <ul>
+    <li
+      class="file-list__file-item"
+      ng-repeat="file in $ctrl.fileList track by file.fileName"
+    >
+      <span>{{$ctrl.getFileNameHtmlTooltip(file)}}</span>
+    </li>
+  </ul>
+</div>
