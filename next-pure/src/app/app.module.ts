@@ -28,6 +28,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common'
 
 import { setAngularJSGlobal, UpgradeModule } from '@angular/upgrade/static'
 import { FileListDirective } from './upgrade/file-list.component'
+import { OldPureModule } from '@hcs-hybrid-demo/old-pure'
 
 @NgModule({
   declarations: [

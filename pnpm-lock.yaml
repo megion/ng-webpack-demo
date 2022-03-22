@@ -118,12 +118,17 @@ importers:
       webpack-merge: 5.8.0
 
   next-hybrid:
-    specifiers: {}
+    specifiers:
+      '@hcs-hybrid-demo/next-pure': workspace:*
+      '@hcs-hybrid-demo/old-pure': workspace:*
+    dependencies:
+      '@hcs-hybrid-demo/next-pure': link:../next-pure
+      '@hcs-hybrid-demo/old-pure': link:../old-pure
 
   next-pure:
     specifiers:
       '@hcs-hybrid-demo/old-pure': workspace:*
-    devDependencies:
+    dependencies:
       '@hcs-hybrid-demo/old-pure': link:../old-pure
 
   old-pure:

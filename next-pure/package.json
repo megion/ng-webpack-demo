@@ -1,15 +1,17 @@
 {
   "name": "@hcs-hybrid-demo/next-pure",
-  "main": "dist/js/index.js",
+  "main": "dist/js/main.js",
   "typings": "dist/types/index.d.ts",
   "version": "1.0.0",
   "scripts": {
     "test": "jest",
+    "ng": "ng",
     "build:dev": "rimraf public && cross-env TS_NODE_PROJECT=\"../configs/tsconfig-webpack.json\" webpack --config webpack-dev.config.ts",
     "build": "rimraf dist && cross-env TS_NODE_PROJECT=\"../configs/tsconfig-webpack.json\" webpack --config webpack-prd.config.ts"
   },
   "devDependencies": {
-    "@hcs-hybrid-demo/old-pure": "workspace:*"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@hcs-hybrid-demo/old-pure": "workspace:*"
+  }
 }

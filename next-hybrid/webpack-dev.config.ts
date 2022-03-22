@@ -1,20 +1,11 @@
-import path from 'path'
 import * as webpack from 'webpack'
 import { merge } from 'webpack-merge'
-import { createConfig } from '../configs/webpack-next.config'
+import { createDevConfig } from '../configs/webpack-next-dev.config'
 
 const config: webpack.Configuration = {
-  devtool: 'cheap-module-source-map',
-  mode: 'development',
-  watch: true,
-
   entry: {
+    polyfills: './polyfills',
     main: './main',
   },
-
-  output: {
-    publicPath: './',
-    path: path.resolve(__dirname, 'public'),
-  },
 }
-export default merge(createConfig(__dirname), config)
+export default merge(createDevConfig(__dirname), config)

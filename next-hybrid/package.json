@@ -4,12 +4,13 @@
   "scripts": {
     "test": "jest",
     "ng": "ng",
-    "build:dev": "rimraf public && cross-env TS_NODE_PROJECT=\"./tsconfig-for-webpack.json\" webpack --config webpack-dev.config.ts",
-    "build": "rimraf public && cross-env TS_NODE_PROJECT=\"./tsconfig-for-webpack.json\" webpack --config webpack-prd.config.ts",
-    "start": "cross-env TS_NODE_PROJECT=\"./tsconfig-for-webpack.json\" webpack serve --config webpack-dev.config.ts"
+    "build:dev": "rimraf public && cross-env TS_NODE_PROJECT=\"../configs/tsconfig-webpack.json\" webpack --config webpack-dev.config.ts",
+    "build": "rimraf dist && cross-env TS_NODE_PROJECT=\"../configs/tsconfig-webpack.json\" webpack --config webpack-prd.config.ts"
   },
   "devDependencies": {
   },
   "dependencies": {
+    "@hcs-hybrid-demo/old-pure": "workspace:*",
+    "@hcs-hybrid-demo/next-pure": "workspace:*"
   }
 }

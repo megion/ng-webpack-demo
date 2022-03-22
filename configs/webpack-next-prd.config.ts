@@ -14,24 +14,25 @@ export function createPrdConfig(cwd: string): webpack.Configuration {
       minimize: false,
     },
 
-    externals: {
-      angular: {
-        commonjs: 'angular',
-        commonjs2: 'angular',
-        amd: 'angular',
-        root: 'angular', // indicates global variable
+    externals: [
+      {
+        angular: {
+          commonjs: 'angular',
+          commonjs2: 'angular',
+          amd: 'angular',
+          root: 'angular', // indicates global variable
+        },
+        'angular-ui-router': {
+          commonjs: 'angular-ui-router',
+          commonjs2: 'angular-ui-router',
+          amd: 'angular-ui-router',
+        },
       },
-      'angular-ui-router': {
-        commonjs: 'angular-ui-router',
-        commonjs2: 'angular-ui-router',
-        amd: 'angular-ui-router',
-      },
-      // '@angular': {
-      //   commonjs: '@angular',
-      //   commonjs2: '@angular',
-      //   amd: '@angular',
-      // },
-    },
+      // Regex
+      /^@angular\//i,
+      /^zone.js/i,
+      /^rxjs/i,
+    ],
 
     module: {
       rules: [
