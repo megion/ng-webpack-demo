@@ -21,11 +21,11 @@ export function createPrdConfig(cwd: string): webpack.Configuration {
         amd: 'angular',
         root: 'angular', // indicates global variable
       },
-      // 'angular-ui-router': {
-      //   commonjs: 'angular-ui-router',
-      //   commonjs2: 'angular-ui-router',
-      //   amd: 'angular-ui-router',
-      // },
+      'angular-ui-router': {
+        commonjs: 'angular-ui-router',
+        commonjs2: 'angular-ui-router',
+        amd: 'angular-ui-router',
+      },
     },
 
     module: {

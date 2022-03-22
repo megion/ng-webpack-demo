@@ -1,122 +1,18 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("angular"));
+		module.exports = factory(require("angular"), require("angular-ui-router"));
 	else if(typeof define === 'function' && define.amd)
-		define(["angular"], factory);
+		define(["angular", "angular-ui-router"], factory);
 	else if(typeof exports === 'object')
-		exports["demoPages"] = factory(require("angular"));
+		exports["demoPages"] = factory(require("angular"), require("angular-ui-router"));
 	else
-		root["demoPages"] = factory(root["angular"]);
-})(self, function(__WEBPACK_EXTERNAL_MODULE__2703__) {
+		root["demoPages"] = factory(root["angular"], root[undefined]);
+})(self, function(__WEBPACK_EXTERNAL_MODULE__703__, __WEBPACK_EXTERNAL_MODULE__795__) {
 return /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 5475:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "DemoPagesModule": () => (/* binding */ DemoPagesModule)
-});
-
-// EXTERNAL MODULE: external {"commonjs":"angular","commonjs2":"angular","amd":"angular","root":"angular"}
-var external_commonjs_angular_commonjs2_angular_amd_angular_root_angular_ = __webpack_require__(2703);
-var external_commonjs_angular_commonjs2_angular_amd_angular_root_angular_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_angular_commonjs2_angular_amd_angular_root_angular_);
-// EXTERNAL MODULE: ../../node_modules/.pnpm/angular-ui-router@1.0.30_angular@1.5.11/node_modules/angular-ui-router/lib-esm/index.js + 12 modules
-var lib_esm = __webpack_require__(5674);
-;// CONCATENATED MODULE: ./app/demo-pages/file-list/file-list.html
-// Module
-var code = "<h1>File list</h1> <ng-form name=\"filesForm\"> <div class=\"form-base\"> <div class=\"form-base__body\"> <div class=\"form-group form-base__form-group\"> <label class=\"col-md-2 control-label form-base__control-label\">Файлы</label> <div class=\"col-md-10\"> <file-list files=\"$ctrl.files\"></file-list> </div> </div> </div> </div> </ng-form> ";
-// Exports
-/* harmony default export */ const file_list = (code);
-;// CONCATENATED MODULE: ./app/demo-pages/file-list/file-list.ts
-class FileListDemoPageController {
-    constructor($scope, $q) {
-        'ngInject';
-        this.$scope = $scope;
-        this.$q = $q;
-        this.files = [];
-    }
-    $onInit() {
-        this.files = [{ fileName: 'file1' }, { fileName: 'file2' }];
-    }
-}
-FileListDemoPageController.selector = 'FileListDemoPageController';
-
-;// CONCATENATED MODULE: ./app/demo-pages/main/main.html
-// Module
-var main_code = "<h3>Demo pages</h3> <ul> <li> <a ui-sref=\"fileList\"> File list </a> </li> </ul> ";
-// Exports
-/* harmony default export */ const main = (main_code);
-;// CONCATENATED MODULE: ./app/demo-pages/main/main.ts
-class MainDemoPageController {
-    constructor($scope) {
-        'ngInject';
-        this.$scope = $scope;
-    }
-    $onInit() { }
-    $onDestroy() { }
-}
-MainDemoPageController.selector = 'MainDemoPageController';
-
-// EXTERNAL MODULE: ./app/index.ts + 7 modules
-var app = __webpack_require__(9161);
-;// CONCATENATED MODULE: ./app/demo-pages/index.ts
-
-
-
-
-
-
-
-function routeConfig($stateProvider, $urlRouterProvider) {
-    'ngInject';
-    $urlRouterProvider.otherwise('/');
-    $stateProvider
-        .state('main', {
-        url: '/',
-        views: {
-            content: {
-                controller: MainDemoPageController.selector,
-                template: main,
-                controllerAs: '$ctrl',
-            },
-        },
-        data: {
-            pageTitle: 'Demo pages',
-        },
-    })
-        .state('fileList', {
-        url: '/file-list',
-        views: {
-            content: {
-                controller: FileListDemoPageController.selector,
-                template: file_list,
-                controllerAs: '$ctrl',
-            },
-        },
-        data: {
-            pageTitle: 'FileList',
-        },
-    });
-}
-const DemoPagesModule = external_commonjs_angular_commonjs2_angular_amd_angular_root_angular_default().module('oldPure.demo.pages', [
-    app.OldPureModule.name,
-    'ui.router',
-    'ui.router.state',
-])
-    .config(routeConfig)
-    .controller(MainDemoPageController.selector, MainDemoPageController)
-    .controller(FileListDemoPageController.selector, FileListDemoPageController);
-
-
-/***/ }),
-
-/***/ 9161:
+/***/ 161:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 
@@ -126,7 +22,7 @@ __webpack_require__.d(__webpack_exports__, {
 });
 
 // EXTERNAL MODULE: external {"commonjs":"angular","commonjs2":"angular","amd":"angular","root":"angular"}
-var external_commonjs_angular_commonjs2_angular_amd_angular_root_angular_ = __webpack_require__(2703);
+var external_commonjs_angular_commonjs2_angular_amd_angular_root_angular_ = __webpack_require__(703);
 var external_commonjs_angular_commonjs2_angular_amd_angular_root_angular_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_angular_commonjs2_angular_amd_angular_root_angular_);
 ;// CONCATENATED MODULE: ./app/components/file-list/file-list.html
 // Module
@@ -232,10 +128,17 @@ const OldPureModule = external_commonjs_angular_commonjs2_angular_amd_angular_ro
 
 /***/ }),
 
-/***/ 2703:
+/***/ 703:
 /***/ ((module) => {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE__2703__;
+module.exports = __WEBPACK_EXTERNAL_MODULE__703__;
+
+/***/ }),
+
+/***/ 795:
+/***/ ((module) => {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__795__;
 
 /***/ })
 
@@ -265,42 +168,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__2703__;
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = __webpack_modules__;
-/******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/chunk loaded */
-/******/ 	(() => {
-/******/ 		var deferred = [];
-/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
-/******/ 			if(chunkIds) {
-/******/ 				priority = priority || 0;
-/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
-/******/ 				deferred[i] = [chunkIds, fn, priority];
-/******/ 				return;
-/******/ 			}
-/******/ 			var notFulfilled = Infinity;
-/******/ 			for (var i = 0; i < deferred.length; i++) {
-/******/ 				var [chunkIds, fn, priority] = deferred[i];
-/******/ 				var fulfilled = true;
-/******/ 				for (var j = 0; j < chunkIds.length; j++) {
-/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
-/******/ 						chunkIds.splice(j--, 1);
-/******/ 					} else {
-/******/ 						fulfilled = false;
-/******/ 						if(priority < notFulfilled) notFulfilled = priority;
-/******/ 					}
-/******/ 				}
-/******/ 				if(fulfilled) {
-/******/ 					deferred.splice(i--, 1)
-/******/ 					var r = fn();
-/******/ 					if (r !== undefined) result = r;
-/******/ 				}
-/******/ 			}
-/******/ 			return result;
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
@@ -325,18 +193,6 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__2703__;
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/global */
-/******/ 	(() => {
-/******/ 		__webpack_require__.g = (function() {
-/******/ 			if (typeof globalThis === 'object') return globalThis;
-/******/ 			try {
-/******/ 				return this || new Function('return this')();
-/******/ 			} catch (e) {
-/******/ 				if (typeof window === 'object') return window;
-/******/ 			}
-/******/ 		})();
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -353,68 +209,110 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__2703__;
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/jsonp chunk loading */
-/******/ 	(() => {
-/******/ 		// no baseURI
-/******/ 		
-/******/ 		// object to store loaded and loading chunks
-/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
-/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
-/******/ 		var installedChunks = {
-/******/ 			"demoPages": 0,
-/******/ 			"index": 0
-/******/ 		};
-/******/ 		
-/******/ 		// no chunk on demand loading
-/******/ 		
-/******/ 		// no prefetching
-/******/ 		
-/******/ 		// no preloaded
-/******/ 		
-/******/ 		// no HMR
-/******/ 		
-/******/ 		// no HMR manifest
-/******/ 		
-/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
-/******/ 		
-/******/ 		// install a JSONP callback for chunk loading
-/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
-/******/ 			var [chunkIds, moreModules, runtime] = data;
-/******/ 			// add "moreModules" to the modules object,
-/******/ 			// then flag all "chunkIds" as loaded and fire callback
-/******/ 			var moduleId, chunkId, i = 0;
-/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
-/******/ 				for(moduleId in moreModules) {
-/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
-/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
-/******/ 					}
-/******/ 				}
-/******/ 				if(runtime) var result = runtime(__webpack_require__);
-/******/ 			}
-/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
-/******/ 			for(;i < chunkIds.length; i++) {
-/******/ 				chunkId = chunkIds[i];
-/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
-/******/ 					installedChunks[chunkId][0]();
-/******/ 				}
-/******/ 				installedChunks[chunkId] = 0;
-/******/ 			}
-/******/ 			return __webpack_require__.O(result);
-/******/ 		}
-/******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunk_name_"] = self["webpackChunk_name_"] || [];
-/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
-/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
-/******/ 	})();
-/******/ 	
 /************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["vendor"], () => (__webpack_require__(5475)))
-/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
-/******/ 	
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "DemoPagesModule": () => (/* binding */ DemoPagesModule)
+});
+
+// EXTERNAL MODULE: external {"commonjs":"angular","commonjs2":"angular","amd":"angular","root":"angular"}
+var external_commonjs_angular_commonjs2_angular_amd_angular_root_angular_ = __webpack_require__(703);
+var external_commonjs_angular_commonjs2_angular_amd_angular_root_angular_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_angular_commonjs2_angular_amd_angular_root_angular_);
+// EXTERNAL MODULE: external {"commonjs":"angular-ui-router","commonjs2":"angular-ui-router","amd":"angular-ui-router"}
+var external_commonjs_angular_ui_router_commonjs2_angular_ui_router_amd_angular_ui_router_ = __webpack_require__(795);
+;// CONCATENATED MODULE: ./app/demo-pages/file-list/file-list.html
+// Module
+var code = "<h1>File list</h1> <ng-form name=\"filesForm\"> <div class=\"form-base\"> <div class=\"form-base__body\"> <div class=\"form-group form-base__form-group\"> <label class=\"col-md-2 control-label form-base__control-label\">Файлы</label> <div class=\"col-md-10\"> <file-list files=\"$ctrl.files\"></file-list> </div> </div> </div> </div> </ng-form> ";
+// Exports
+/* harmony default export */ const file_list = (code);
+;// CONCATENATED MODULE: ./app/demo-pages/file-list/file-list.ts
+class FileListDemoPageController {
+    constructor($scope, $q) {
+        'ngInject';
+        this.$scope = $scope;
+        this.$q = $q;
+        this.files = [];
+    }
+    $onInit() {
+        this.files = [{ fileName: 'file1' }, { fileName: 'file2' }];
+    }
+}
+FileListDemoPageController.selector = 'FileListDemoPageController';
+
+;// CONCATENATED MODULE: ./app/demo-pages/main/main.html
+// Module
+var main_code = "<h3>Demo pages</h3> <ul> <li> <a ui-sref=\"fileList\"> File list </a> </li> </ul> ";
+// Exports
+/* harmony default export */ const main = (main_code);
+;// CONCATENATED MODULE: ./app/demo-pages/main/main.ts
+class MainDemoPageController {
+    constructor($scope) {
+        'ngInject';
+        this.$scope = $scope;
+    }
+    $onInit() { }
+    $onDestroy() { }
+}
+MainDemoPageController.selector = 'MainDemoPageController';
+
+// EXTERNAL MODULE: ./app/index.ts + 7 modules
+var app = __webpack_require__(161);
+;// CONCATENATED MODULE: ./app/demo-pages/index.ts
+
+
+
+
+
+
+
+function routeConfig($stateProvider, $urlRouterProvider) {
+    'ngInject';
+    $urlRouterProvider.otherwise('/');
+    $stateProvider
+        .state('main', {
+        url: '/',
+        views: {
+            content: {
+                controller: MainDemoPageController.selector,
+                template: main,
+                controllerAs: '$ctrl',
+            },
+        },
+        data: {
+            pageTitle: 'Demo pages',
+        },
+    })
+        .state('fileList', {
+        url: '/file-list',
+        views: {
+            content: {
+                controller: FileListDemoPageController.selector,
+                template: file_list,
+                controllerAs: '$ctrl',
+            },
+        },
+        data: {
+            pageTitle: 'FileList',
+        },
+    });
+}
+const DemoPagesModule = external_commonjs_angular_commonjs2_angular_amd_angular_root_angular_default().module('oldPure.demo.pages', [
+    app.OldPureModule.name,
+    'ui.router',
+    'ui.router.state',
+])
+    .config(routeConfig)
+    .controller(MainDemoPageController.selector, MainDemoPageController)
+    .controller(FileListDemoPageController.selector, FileListDemoPageController);
+
+})();
+
 /******/ 	return __webpack_exports__;
 /******/ })()
 ;
