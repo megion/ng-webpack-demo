@@ -1,31 +1,15 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("@angular/common"), require("@angular/common/http"), require("@angular/core"), require("@angular/forms"), require("@angular/platform-browser"), require("@angular/router"), require("@angular/upgrade/static"), require("rxjs"), require("rxjs/operators"), require("zone.js/plugins/zone-error"), require("angular"), require("angular-ui-router"));
+		module.exports = factory(require("@angular/common"), require("@angular/common/http"), require("@angular/core"), require("@angular/forms"), require("@angular/platform-browser"), require("@angular/router"), require("@angular/upgrade/static"), require("rxjs"), require("rxjs/operators"), require("angular"), require("angular-ui-router"));
 	else if(typeof define === 'function' && define.amd)
-		define(["@angular/common", "@angular/common/http", "@angular/core", "@angular/forms", "@angular/platform-browser", "@angular/router", "@angular/upgrade/static", "rxjs", "rxjs/operators", "zone.js/plugins/zone-error", "angular", "angular-ui-router"], factory);
+		define(["@angular/common", "@angular/common/http", "@angular/core", "@angular/forms", "@angular/platform-browser", "@angular/router", "@angular/upgrade/static", "rxjs", "rxjs/operators", "angular", "angular-ui-router"], factory);
 	else if(typeof exports === 'object')
-		exports["main"] = factory(require("@angular/common"), require("@angular/common/http"), require("@angular/core"), require("@angular/forms"), require("@angular/platform-browser"), require("@angular/router"), require("@angular/upgrade/static"), require("rxjs"), require("rxjs/operators"), require("zone.js/plugins/zone-error"), require("angular"), require("angular-ui-router"));
+		exports["main"] = factory(require("@angular/common"), require("@angular/common/http"), require("@angular/core"), require("@angular/forms"), require("@angular/platform-browser"), require("@angular/router"), require("@angular/upgrade/static"), require("rxjs"), require("rxjs/operators"), require("angular"), require("angular-ui-router"));
 	else
-		root["main"] = factory(root["@angular/common"], root["@angular/common/http"], root["@angular/core"], root["@angular/forms"], root["@angular/platform-browser"], root["@angular/router"], root["@angular/upgrade/static"], root["rxjs"], root["rxjs/operators"], root["zone.js/plugins/zone-error"], root["angular"], root[undefined]);
-})(self, function(__WEBPACK_EXTERNAL_MODULE__848__, __WEBPACK_EXTERNAL_MODULE__983__, __WEBPACK_EXTERNAL_MODULE__900__, __WEBPACK_EXTERNAL_MODULE__161__, __WEBPACK_EXTERNAL_MODULE__46__, __WEBPACK_EXTERNAL_MODULE__882__, __WEBPACK_EXTERNAL_MODULE__688__, __WEBPACK_EXTERNAL_MODULE__832__, __WEBPACK_EXTERNAL_MODULE__597__, __WEBPACK_EXTERNAL_MODULE__501__, __WEBPACK_EXTERNAL_MODULE__703__, __WEBPACK_EXTERNAL_MODULE__795__) {
+		root["main"] = factory(root["@angular/common"], root["@angular/common/http"], root["@angular/core"], root["@angular/forms"], root["@angular/platform-browser"], root["@angular/router"], root["@angular/upgrade/static"], root["rxjs"], root["rxjs/operators"], root["angular"], root[undefined]);
+})(self, function(__WEBPACK_EXTERNAL_MODULE__848__, __WEBPACK_EXTERNAL_MODULE__983__, __WEBPACK_EXTERNAL_MODULE__900__, __WEBPACK_EXTERNAL_MODULE__161__, __WEBPACK_EXTERNAL_MODULE__46__, __WEBPACK_EXTERNAL_MODULE__882__, __WEBPACK_EXTERNAL_MODULE__688__, __WEBPACK_EXTERNAL_MODULE__832__, __WEBPACK_EXTERNAL_MODULE__597__, __WEBPACK_EXTERNAL_MODULE__703__, __WEBPACK_EXTERNAL_MODULE__795__) {
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
-
-/***/ 656:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ScopeProvider = void 0;
-exports.ScopeProvider = {
-    deps: ['$injector'],
-    provide: '$scope',
-    useFactory: (injector) => injector.get('$rootScope').$new(),
-};
-
-
-/***/ }),
 
 /***/ 480:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
@@ -555,8 +539,7 @@ const i1 = (0, tslib_1.__importStar)(__webpack_require__(487));
 const i2 = (0, tslib_1.__importStar)(__webpack_require__(882));
 const i3 = (0, tslib_1.__importStar)(__webpack_require__(848));
 const i4 = (0, tslib_1.__importStar)(__webpack_require__(161));
-const i5 = (0, tslib_1.__importStar)(__webpack_require__(890));
-const i6 = (0, tslib_1.__importStar)(__webpack_require__(297));
+const i5 = (0, tslib_1.__importStar)(__webpack_require__(297));
 function HeroDetailComponent_div_0_Template(rf, ctx) { if (rf & 1) {
     const _r2 = i0.ɵɵgetCurrentView();
     i0.ɵɵelementStart(0, "div")(1, "h2")(2, "span");
@@ -570,17 +553,17 @@ function HeroDetailComponent_div_0_Template(rf, ctx) { if (rf & 1) {
     i0.ɵɵelementEnd();
     i0.ɵɵtext(9);
     i0.ɵɵelementEnd();
-    i0.ɵɵelementStart(10, "div")(11, "label", 2);
+    i0.ɵɵelementStart(10, "div")(11, "label", 1);
     i0.ɵɵtext(12, "name: ");
     i0.ɵɵelementEnd();
-    i0.ɵɵelementStart(13, "input", 3);
+    i0.ɵɵelementStart(13, "input", 2);
     i0.ɵɵlistener("ngModelChange", function HeroDetailComponent_div_0_Template_input_ngModelChange_13_listener($event) { i0.ɵɵrestoreView(_r2); const ctx_r1 = i0.ɵɵnextContext(); return ctx_r1.hero.name = $event; });
     i0.ɵɵelementEnd()();
-    i0.ɵɵelementStart(14, "button", 4);
+    i0.ɵɵelementStart(14, "button", 3);
     i0.ɵɵlistener("click", function HeroDetailComponent_div_0_Template_button_click_14_listener() { i0.ɵɵrestoreView(_r2); const ctx_r3 = i0.ɵɵnextContext(); return ctx_r3.save(); });
     i0.ɵɵtext(15, "Save");
     i0.ɵɵelementEnd();
-    i0.ɵɵelementStart(16, "button", 4);
+    i0.ɵɵelementStart(16, "button", 3);
     i0.ɵɵlistener("click", function HeroDetailComponent_div_0_Template_button_click_16_listener() { i0.ɵɵrestoreView(_r2); const ctx_r4 = i0.ɵɵnextContext(); return ctx_r4.cancel(); });
     i0.ɵɵtext(17, "Cancel");
     i0.ɵɵelementEnd()();
@@ -631,14 +614,11 @@ class HeroDetailComponent {
 }
 exports.HeroDetailComponent = HeroDetailComponent;
 HeroDetailComponent.ɵfac = function HeroDetailComponent_Factory(t) { return new (t || HeroDetailComponent)(i0.ɵɵdirectiveInject(i1.HeroDetailService), i0.ɵɵdirectiveInject(i2.ActivatedRoute), i0.ɵɵdirectiveInject(i2.Router)); };
-HeroDetailComponent.ɵcmp = /*@__PURE__*/ i0.ɵɵdefineComponent({ type: HeroDetailComponent, selectors: [["app-hero-detail"]], features: [i0.ɵɵProvidersFeature([hero_detail_service_1.HeroDetailService])], decls: 2, vars: 2, consts: [[4, "ngIf"], [3, "files"], ["for", "name"], ["id", "name", "placeholder", "name", 3, "ngModel", "ngModelChange"], [3, "click"]], template: function HeroDetailComponent_Template(rf, ctx) { if (rf & 1) {
+HeroDetailComponent.ɵcmp = /*@__PURE__*/ i0.ɵɵdefineComponent({ type: HeroDetailComponent, selectors: [["app-hero-detail"]], features: [i0.ɵɵProvidersFeature([hero_detail_service_1.HeroDetailService])], decls: 1, vars: 1, consts: [[4, "ngIf"], ["for", "name"], ["id", "name", "placeholder", "name", 3, "ngModel", "ngModelChange"], [3, "click"]], template: function HeroDetailComponent_Template(rf, ctx) { if (rf & 1) {
         i0.ɵɵtemplate(0, HeroDetailComponent_div_0_Template, 18, 5, "div", 0);
-        i0.ɵɵelement(1, "file-list", 1);
     } if (rf & 2) {
         i0.ɵɵproperty("ngIf", ctx.hero);
-        i0.ɵɵadvance(1);
-        i0.ɵɵproperty("files", ctx.files);
-    } }, directives: [i3.NgIf, i4.DefaultValueAccessor, i4.NgControlStatus, i4.NgModel, i5.FileListDirective], pipes: [i6.TitleCasePipe], styles: ["label[_ngcontent-%COMP%] {\n  display: inline-block;\n  width: 3em;\n  margin: 0.5em 0;\n  color: #607d8b;\n  font-weight: bold;\n}\ninput[_ngcontent-%COMP%] {\n  height: 2em;\n  font-size: 1em;\n  padding-left: 0.4em;\n}\nbutton[_ngcontent-%COMP%] {\n  margin-top: 20px;\n  font-family: Arial, sans-serif;\n  background-color: #eee;\n  border: none;\n  padding: 5px 10px;\n  border-radius: 4px;\n  cursor: pointer;\n}\nbutton[_ngcontent-%COMP%]:hover {\n  background-color: #cfd8dc;\n}\nbutton[_ngcontent-%COMP%]:disabled {\n  background-color: #eee;\n  color: #ccc;\n  cursor: auto;\n}"] });
+    } }, directives: [i3.NgIf, i4.DefaultValueAccessor, i4.NgControlStatus, i4.NgModel], pipes: [i5.TitleCasePipe], styles: ["label[_ngcontent-%COMP%] {\n  display: inline-block;\n  width: 3em;\n  margin: 0.5em 0;\n  color: #607d8b;\n  font-weight: bold;\n}\ninput[_ngcontent-%COMP%] {\n  height: 2em;\n  font-size: 1em;\n  padding-left: 0.4em;\n}\nbutton[_ngcontent-%COMP%] {\n  margin-top: 20px;\n  font-family: Arial, sans-serif;\n  background-color: #eee;\n  border: none;\n  padding: 5px 10px;\n  border-radius: 4px;\n  cursor: pointer;\n}\nbutton[_ngcontent-%COMP%]:hover {\n  background-color: #cfd8dc;\n}\nbutton[_ngcontent-%COMP%]:disabled {\n  background-color: #eee;\n  color: #ccc;\n  cursor: auto;\n}"] });
 
 
 /***/ }),
@@ -982,50 +962,16 @@ TitleCasePipe.ɵpipe = /*@__PURE__*/ i0.ɵɵdefinePipe({ name: "titlecase", type
 
 /***/ }),
 
-/***/ 890:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ 474:
+/***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.FileListDirective = void 0;
-const tslib_1 = __webpack_require__(198);
-const static_1 = __webpack_require__(688);
-const ajc_upgraded_providers_1 = __webpack_require__(656);
-const i0 = (0, tslib_1.__importStar)(__webpack_require__(900));
-class FileListDirective extends static_1.UpgradeComponent {
-    constructor(elementRef, injector) {
-        super('fileList', elementRef, injector);
-    }
-}
-exports.FileListDirective = FileListDirective;
-FileListDirective.ɵfac = function FileListDirective_Factory(t) { return new (t || FileListDirective)(i0.ɵɵdirectiveInject(i0.ElementRef), i0.ɵɵdirectiveInject(i0.Injector)); };
-FileListDirective.ɵdir = /*@__PURE__*/ i0.ɵɵdefineDirective({ type: FileListDirective, selectors: [["file-list"]], inputs: { files: "files" }, features: [i0.ɵɵProvidersFeature([ajc_upgraded_providers_1.ScopeProvider]), i0.ɵɵInheritDefinitionFeature] });
-
-
-/***/ }),
-
-/***/ 578:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.environment = void 0;
 exports.environment = {
-    production: false,
+    production: true,
 };
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-__webpack_require__(501); // Included with Angular CLI.
 
 
 /***/ }),
@@ -1044,7 +990,7 @@ __webpack_require__(795);
 const core_1 = __webpack_require__(900);
 const static_1 = __webpack_require__(688);
 const app_module_1 = __webpack_require__(402);
-const environment_1 = __webpack_require__(578);
+const environment_1 = __webpack_require__(474);
 __webpack_require__(277);
 const old_pure_1 = __webpack_require__(152);
 console.log('production: ', environment_1.environment.production);
@@ -1073,7 +1019,7 @@ __NgCli_bootstrap_1.platformBrowser()
 
 (function webpackUniversalModuleDefinition(root, factory) {
   if (true) module.exports = factory(__webpack_require__(703));else {}
-})(self, function (__WEBPACK_EXTERNAL_MODULE__703__) {
+})(self, function (__WEBPACK_EXTERNAL_MODULE__2703__) {
   return (
     /******/
     (() => {
@@ -1085,10 +1031,10 @@ __NgCli_bootstrap_1.platformBrowser()
 
       var __webpack_modules__ = {
         /***/
-        703:
+        2703:
         /***/
         module => {
-          module.exports = __WEBPACK_EXTERNAL_MODULE__703__;
+          module.exports = __WEBPACK_EXTERNAL_MODULE__2703__;
           /***/
         }
         /******/
@@ -1109,7 +1055,7 @@ __NgCli_bootstrap_1.platformBrowser()
 
       /******/
 
-      function __nested_webpack_require_1028__(moduleId) {
+      function __nested_webpack_require_1031__(moduleId) {
         /******/
         // Check if module is in cache
 
@@ -1147,7 +1093,7 @@ __NgCli_bootstrap_1.platformBrowser()
 
         /******/
 
-        __webpack_modules__[moduleId](module, module.exports, __nested_webpack_require_1028__);
+        __webpack_modules__[moduleId](module, module.exports, __nested_webpack_require_1031__);
         /******/
 
         /******/
@@ -1175,7 +1121,7 @@ __NgCli_bootstrap_1.platformBrowser()
         // getDefaultExport function for compatibility with non-harmony modules
 
         /******/
-        __nested_webpack_require_1028__.n = module => {
+        __nested_webpack_require_1031__.n = module => {
           /******/
           var getter = module && module.__esModule ?
           /******/
@@ -1184,7 +1130,7 @@ __NgCli_bootstrap_1.platformBrowser()
           () => module;
           /******/
 
-          __nested_webpack_require_1028__.d(getter, {
+          __nested_webpack_require_1031__.d(getter, {
             a: getter
           });
           /******/
@@ -1210,11 +1156,11 @@ __NgCli_bootstrap_1.platformBrowser()
         // define getter functions for harmony exports
 
         /******/
-        __nested_webpack_require_1028__.d = (exports, definition) => {
+        __nested_webpack_require_1031__.d = (exports, definition) => {
           /******/
           for (var key in definition) {
             /******/
-            if (__nested_webpack_require_1028__.o(definition, key) && !__nested_webpack_require_1028__.o(exports, key)) {
+            if (__nested_webpack_require_1031__.o(definition, key) && !__nested_webpack_require_1031__.o(exports, key)) {
               /******/
               Object.defineProperty(exports, key, {
                 enumerable: true,
@@ -1242,7 +1188,7 @@ __NgCli_bootstrap_1.platformBrowser()
 
       (() => {
         /******/
-        __nested_webpack_require_1028__.o = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop);
+        __nested_webpack_require_1031__.o = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop);
         /******/
 
       })();
@@ -1260,7 +1206,7 @@ __NgCli_bootstrap_1.platformBrowser()
         // define __esModule on exports
 
         /******/
-        __nested_webpack_require_1028__.r = exports => {
+        __nested_webpack_require_1031__.r = exports => {
           /******/
           if (typeof Symbol !== 'undefined' && Symbol.toStringTag) {
             /******/
@@ -1289,19 +1235,19 @@ __NgCli_bootstrap_1.platformBrowser()
 
       (() => {
         // ESM COMPAT FLAG
-        __nested_webpack_require_1028__.r(__webpack_exports__); // EXPORTS
+        __nested_webpack_require_1031__.r(__webpack_exports__); // EXPORTS
 
 
-        __nested_webpack_require_1028__.d(__webpack_exports__, {
+        __nested_webpack_require_1031__.d(__webpack_exports__, {
           "OldPureModule": () =>
           /* binding */
           OldPureModule
         }); // EXTERNAL MODULE: external {"commonjs":"angular","commonjs2":"angular","amd":"angular","root":"angular"}
 
 
-        var external_commonjs_angular_commonjs2_angular_amd_angular_root_angular_ = __nested_webpack_require_1028__(703);
+        var external_commonjs_angular_commonjs2_angular_amd_angular_root_angular_ = __nested_webpack_require_1031__(2703);
 
-        var external_commonjs_angular_commonjs2_angular_amd_angular_root_angular_default = /*#__PURE__*/__nested_webpack_require_1028__.n(external_commonjs_angular_commonjs2_angular_amd_angular_root_angular_);
+        var external_commonjs_angular_commonjs2_angular_amd_angular_root_angular_default = /*#__PURE__*/__nested_webpack_require_1031__.n(external_commonjs_angular_commonjs2_angular_amd_angular_root_angular_);
 
         ; // CONCATENATED MODULE: ./app/components/file-list/file-list.html
         // Module
@@ -1404,7 +1350,7 @@ __NgCli_bootstrap_1.platformBrowser()
         ; // CONCATENATED MODULE: ./app/index.ts
         // import { MainController } from './MainController'
 
-        const OldPureModule = external_commonjs_angular_commonjs2_angular_amd_angular_root_angular_default().module('oldPure', ['ui.router', 'ui.router.state', OldPureComponentsModule.name, OldPureServiceModule.name]); // export * from './api/model/models'
+        const OldPureModule = external_commonjs_angular_commonjs2_angular_amd_angular_root_angular_default().module('oldPure', [OldPureComponentsModule.name, OldPureServiceModule.name]); // export * from './api/model/models'
       })();
       /******/
 
@@ -1496,14 +1442,6 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__832__;
 
 "use strict";
 module.exports = __WEBPACK_EXTERNAL_MODULE__597__;
-
-/***/ }),
-
-/***/ 501:
-/***/ ((module) => {
-
-"use strict";
-module.exports = __WEBPACK_EXTERNAL_MODULE__501__;
 
 /***/ }),
 

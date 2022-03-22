@@ -5,6 +5,11 @@
     "build": "npm run build --workspaces",
     "test": "npm run test --workspaces"
   },
+  "workspaces": [
+    "./old-pure",
+    "./next-pure",
+    "./next-hybrid"
+  ],
   "devDependencies": {
     "@angular-devkit/build-angular": "^13.3.0",
     "@angular/cli": "^13.3.0",

@@ -7,6 +7,15 @@ export function createPrdConfig(cwd: string): webpack.Configuration {
   const config: webpack.Configuration = {
     mode: 'production',
 
+    resolve: {
+      alias: {
+        './environments/environment': path.resolve(
+          cwd,
+          'src/environments/environment.prod.ts',
+        ),
+      },
+    },
+
     output: {
       path: path.resolve(cwd, 'dist'),
     },

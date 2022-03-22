@@ -38,43 +38,39 @@ describe('HeroDetailComponent', () => {
   })
 
   describe('with HeroModule setup', () => {
-    beforeEach(
-      waitForAsync(() => {
-        void TestBed.configureTestingModule({
-          imports: [HeroModule, RouterTestingModule],
-          providers: [
-            { provide: ActivatedRoute, useValue: activatedRoute },
-            { provide: HeroService, useClass: TestHeroService },
-          ],
+    beforeEach(waitForAsync(() => {
+      void TestBed.configureTestingModule({
+        imports: [HeroModule, RouterTestingModule],
+        providers: [
+          { provide: ActivatedRoute, useValue: activatedRoute },
+          { provide: HeroService, useClass: TestHeroService },
+        ],
+      })
+        .compileComponents()
+        .then(() => {
+          const router = TestBed.inject(Router)
+          jest
+            .spyOn(router, 'navigate')
+            .mockImplementation(() => firstValueFrom(of(true)))
         })
-          .compileComponents()
-          .then(() => {
-            const router = TestBed.inject(Router)
-            jest
-              .spyOn(router, 'navigate')
-              .mockImplementation(() => firstValueFrom(of(true)))
-          })
-      }),
-    )
+    }))
 
     describe('when navigate to existing hero', () => {
       let expectedHero: Hero
 
-      beforeEach(
-        waitForAsync(() => {
-          expectedHero = firstHero
-          activatedRoute.setParamMap({ id: expectedHero.id })
-          fixture = TestBed.createComponent(HeroDetailComponent)
-          component = fixture.componentInstance
-          page = new Page(fixture)
+      beforeEach(waitForAsync(() => {
+        expectedHero = firstHero
+        activatedRoute.setParamMap({ id: expectedHero.id })
+        fixture = TestBed.createComponent(HeroDetailComponent)
+        component = fixture.componentInstance
+        page = new Page(fixture)
 
+        fixture.detectChanges()
+
+        fixture.whenStable().then(() => {
           fixture.detectChanges()
-
-          fixture.whenStable().then(() => {
-            fixture.detectChanges()
-          })
-        }),
-      )
+        })
+      }))
 
       it("should display that hero's name", () => {
         expect(page.nameDisplay.textContent).toBe(expectedHero.name)
@@ -118,19 +114,17 @@ describe('HeroDetailComponent', () => {
     })
 
     describe('when navigate with no hero id', () => {
-      beforeEach(
-        waitForAsync(() => {
-          fixture = TestBed.createComponent(HeroDetailComponent)
-          component = fixture.componentInstance
-          page = new Page(fixture)
+      beforeEach(waitForAsync(() => {
+        fixture = TestBed.createComponent(HeroDetailComponent)
+        component = fixture.componentInstance
+        page = new Page(fixture)
 
+        fixture.detectChanges()
+
+        fixture.whenStable().then(() => {
           fixture.detectChanges()
-
-          fixture.whenStable().then(() => {
-            fixture.detectChanges()
-          })
-        }),
-      )
+        })
+      }))
 
       it('should have hero.id === 0', () => {
         expect(component.hero.id).toBe(0)
@@ -142,20 +136,18 @@ describe('HeroDetailComponent', () => {
     })
 
     describe('when navigate to non-existent hero id', () => {
-      beforeEach(
-        waitForAsync(() => {
-          activatedRoute.setParamMap({ id: 99999 })
-          fixture = TestBed.createComponent(HeroDetailComponent)
-          component = fixture.componentInstance
-          page = new Page(fixture)
+      beforeEach(waitForAsync(() => {
+        activatedRoute.setParamMap({ id: 99999 })
+        fixture = TestBed.createComponent(HeroDetailComponent)
+        component = fixture.componentInstance
+        page = new Page(fixture)
 
+        fixture.detectChanges()
+
+        fixture.whenStable().then(() => {
           fixture.detectChanges()
-
-          fixture.whenStable().then(() => {
-            fixture.detectChanges()
-          })
-        }),
-      )
+        })
+      }))
 
       it('should try to navigate back to hero list', () => {
         expect(page.gotoListSpy.mock.calls.length).toBeTruthy()
@@ -195,52 +187,50 @@ describe('HeroDetailComponent', () => {
       saveHero: ReturnType<typeof jest.spyOn>
     }
 
-    beforeEach(
-      waitForAsync(() => {
-        void TestBed.configureTestingModule({
-          imports: [HeroModule, RouterTestingModule],
-          providers: [
-            { provide: ActivatedRoute, useValue: activatedRoute },
-            { provide: HeroDetailService, useValue: {} },
-          ],
+    beforeEach(waitForAsync(() => {
+      void TestBed.configureTestingModule({
+        imports: [HeroModule, RouterTestingModule],
+        providers: [
+          { provide: ActivatedRoute, useValue: activatedRoute },
+          { provide: HeroDetailService, useValue: {} },
+        ],
+      })
+        .overrideComponent(HeroDetailComponent, {
+          set: {
+            providers: [
+              { provide: HeroDetailService, useClass: HeroDetailServiceMock },
+            ],
+          },
         })
-          .overrideComponent(HeroDetailComponent, {
-            set: {
-              providers: [
-                { provide: HeroDetailService, useClass: HeroDetailServiceMock },
-              ],
-            },
-          })
-          .compileComponents()
-          .then(() => {
-            const router = TestBed.inject(Router)
-            jest
-              .spyOn(router, 'navigate')
-              .mockImplementation(() => firstValueFrom(of(true)))
+        .compileComponents()
+        .then(() => {
+          const router = TestBed.inject(Router)
+          jest
+            .spyOn(router, 'navigate')
+            .mockImplementation(() => firstValueFrom(of(true)))
 
-            activatedRoute.setParamMap({ id: 99999 })
+          activatedRoute.setParamMap({ id: 99999 })
 
-            fixture = TestBed.createComponent(HeroDetailComponent)
-            component = fixture.componentInstance
-            page = new Page(fixture)
+          fixture = TestBed.createComponent(HeroDetailComponent)
+          component = fixture.componentInstance
+          page = new Page(fixture)
 
-            heroDetailsService = fixture.debugElement.injector.get(
-              HeroDetailService,
-            ) as unknown as HeroDetailServiceMock
+          heroDetailsService = fixture.debugElement.injector.get(
+            HeroDetailService,
+          ) as unknown as HeroDetailServiceMock
 
-            hdsSpy = {
-              getHero: jest.spyOn(heroDetailsService, 'getHero'),
-              saveHero: jest.spyOn(heroDetailsService, 'saveHero'),
-            }
+          hdsSpy = {
+            getHero: jest.spyOn(heroDetailsService, 'getHero'),
+            saveHero: jest.spyOn(heroDetailsService, 'saveHero'),
+          }
 
+          fixture.detectChanges()
+
+          fixture.whenStable().then(() => {
             fixture.detectChanges()
-
-            fixture.whenStable().then(() => {
-              fixture.detectChanges()
-            })
           })
-      }),
-    )
+        })
+    }))
 
     it('should have called `getHero`', () => {
       expect(hdsSpy.getHero.mock.calls.length).toEqual(1)
@@ -284,85 +274,75 @@ describe('HeroDetailComponent', () => {
   })
 
   describe('with FormsModule setup', () => {
-    beforeEach(
-      waitForAsync(() => {
-        void TestBed.configureTestingModule({
-          imports: [FormsModule, RouterTestingModule],
-          declarations: [HeroDetailComponent, TitleCasePipe],
-          providers: [
-            { provide: ActivatedRoute, useValue: activatedRoute },
-            { provide: HeroService, useClass: TestHeroService },
-          ],
+    beforeEach(waitForAsync(() => {
+      void TestBed.configureTestingModule({
+        imports: [FormsModule, RouterTestingModule],
+        declarations: [HeroDetailComponent, TitleCasePipe],
+        providers: [
+          { provide: ActivatedRoute, useValue: activatedRoute },
+          { provide: HeroService, useClass: TestHeroService },
+        ],
+      })
+        .compileComponents()
+        .then(() => {
+          const router = TestBed.inject(Router)
+          jest
+            .spyOn(router, 'navigate')
+            .mockImplementation(() => firstValueFrom(of(true)))
         })
-          .compileComponents()
-          .then(() => {
-            const router = TestBed.inject(Router)
-            jest
-              .spyOn(router, 'navigate')
-              .mockImplementation(() => firstValueFrom(of(true)))
-          })
-      }),
-    )
+    }))
 
-    it(
-      // eslint-disable-next-line quotes
-      "formsModuleSetup: should display 1st hero's name",
-      waitForAsync(() => {
-        const expectedHero = firstHero
-        activatedRoute.setParamMap({ id: expectedHero.id })
-        fixture = TestBed.createComponent(HeroDetailComponent)
-        component = fixture.componentInstance
-        page = new Page(fixture)
+    it(// eslint-disable-next-line quotes
+    "formsModuleSetup: should display 1st hero's name", waitForAsync(() => {
+      const expectedHero = firstHero
+      activatedRoute.setParamMap({ id: expectedHero.id })
+      fixture = TestBed.createComponent(HeroDetailComponent)
+      component = fixture.componentInstance
+      page = new Page(fixture)
 
+      fixture.detectChanges()
+
+      fixture.whenStable().then(() => {
         fixture.detectChanges()
-
-        fixture.whenStable().then(() => {
-          fixture.detectChanges()
-          expect(page.nameDisplay.textContent).toBe(expectedHero.name)
-        })
-      }),
-    )
+        expect(page.nameDisplay.textContent).toBe(expectedHero.name)
+      })
+    }))
   })
 
   describe('with SharedModule setup', () => {
-    beforeEach(
-      waitForAsync(() => {
-        void TestBed.configureTestingModule({
-          imports: [SharedModule, RouterTestingModule],
-          declarations: [HeroDetailComponent],
-          providers: [
-            { provide: ActivatedRoute, useValue: activatedRoute },
-            { provide: HeroService, useClass: TestHeroService },
-          ],
+    beforeEach(waitForAsync(() => {
+      void TestBed.configureTestingModule({
+        imports: [SharedModule, RouterTestingModule],
+        declarations: [HeroDetailComponent],
+        providers: [
+          { provide: ActivatedRoute, useValue: activatedRoute },
+          { provide: HeroService, useClass: TestHeroService },
+        ],
+      })
+        .compileComponents()
+        .then(() => {
+          const router = TestBed.inject(Router)
+          jest
+            .spyOn(router, 'navigate')
+            .mockImplementation(() => firstValueFrom(of(true)))
         })
-          .compileComponents()
-          .then(() => {
-            const router = TestBed.inject(Router)
-            jest
-              .spyOn(router, 'navigate')
-              .mockImplementation(() => firstValueFrom(of(true)))
-          })
-      }),
-    )
+    }))
 
-    it(
-      // eslint-disable-next-line quotes
-      "sharedModuleSetup: should display 1st hero's name",
-      waitForAsync(() => {
-        const expectedHero = firstHero
-        activatedRoute.setParamMap({ id: expectedHero.id })
-        fixture = TestBed.createComponent(HeroDetailComponent)
-        component = fixture.componentInstance
-        page = new Page(fixture)
+    it(// eslint-disable-next-line quotes
+    "sharedModuleSetup: should display 1st hero's name", waitForAsync(() => {
+      const expectedHero = firstHero
+      activatedRoute.setParamMap({ id: expectedHero.id })
+      fixture = TestBed.createComponent(HeroDetailComponent)
+      component = fixture.componentInstance
+      page = new Page(fixture)
 
+      fixture.detectChanges()
+
+      fixture.whenStable().then(() => {
         fixture.detectChanges()
-
-        fixture.whenStable().then(() => {
-          fixture.detectChanges()
-          expect(page.nameDisplay.textContent).toBe(expectedHero.name)
-        })
-      }),
-    )
+        expect(page.nameDisplay.textContent).toBe(expectedHero.name)
+      })
+    }))
   })
 })
 

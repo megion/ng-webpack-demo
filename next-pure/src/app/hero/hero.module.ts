@@ -8,6 +8,7 @@ import { routedComponents, HeroRoutingModule } from './hero-routing.module'
 
 @NgModule({
   imports: [SharedModule, HeroRoutingModule, FormsModule],
-  declarations: [routedComponents, FileListDirective],
+  // declarations: [routedComponents, FileListDirective],
+  declarations: [routedComponents],
 })
 export class HeroModule {}

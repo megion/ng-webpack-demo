@@ -3605,7 +3605,7 @@ packages:
       ajv:
         optional: true
     dependencies:
-      ajv: 8.9.0
+      ajv: 8.10.0
     dev: true
 
   /ajv-keywords/3.5.2_ajv@6.12.6:

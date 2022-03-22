@@ -4,10 +4,9 @@
   "typings": "dist/types/index.d.ts",
   "version": "1.0.0",
   "scripts": {
-    "test": "jest",
+    "test": "echo no test",
     "build:dev": "rimraf public && cross-env TS_NODE_PROJECT=\"../configs/tsconfig-webpack.json\" webpack --config webpack-dev.config.ts",
-    "build": "rimraf dist && cross-env TS_NODE_PROJECT=\"../configs/tsconfig-webpack.json\" webpack --config webpack-prd.config.ts",
-    "start": "cross-env TS_NODE_PROJECT=\"./tsconfig-for-webpack.json\" webpack serve --config webpack-dev.config.ts"
+    "build": "rimraf dist && cross-env TS_NODE_PROJECT=\"../configs/tsconfig-webpack.json\" webpack --config webpack-prd.config.ts"
   },
   "devDependencies": {},
   "dependencies": {}
